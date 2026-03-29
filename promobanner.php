@@ -6,7 +6,7 @@
  * It allows admins to create multiple banners with images, titles, descriptions, CTAs,
  * assign them to categories, set active status, and schedule them.
  *
- * @author Your Name
+ * @author Gaurav
  * @version 1.0.0
  * @since PrestaShop 1.7
  */
@@ -186,6 +186,7 @@ class PromoBanner extends Module
                 AND categories LIKE "%,' . (int) $id_category . ',%"';
 
         $banners = Db::getInstance()->executeS($sql);
+        // print_r($banners); // Debug: check retrieved banners
 
         // Add full image URL to each banner
         foreach ($banners as &$banner) {

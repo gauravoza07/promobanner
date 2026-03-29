@@ -50,8 +50,16 @@ class AdminPromoBannerController extends AdminController
                 'align' => 'center',
                 'class' => 'fixed-width-xs'
             ),
+            'image' => array(
+                'title' => $this->l('Image'),
+                'align' => 'center',
+                'callback' => 'renderImage', // Custom callback to display image
+                'orderby' => false,
+                'search' => false
+            ),
             'title' => array(
-                'title' => $this->l('Title')
+                'title' => $this->l('Title'),
+                'align' => 'left'
             ),
             'is_active' => array(
                 'title' => $this->l('Active'),
@@ -186,6 +194,15 @@ class AdminPromoBannerController extends AdminController
         }
 
         parent::postProcess();
+    }
+    public function renderImage($image, $row)
+    {
+        if ($image) {
+            // Build URL dynamically - use shop base URL for localhost:8080 support
+            $image_url = $this->context->shop->getBaseURL() . 'modules/promobanner/views/img/' . $image;
+            return '<img src="' . $image_url . '" alt="' . htmlspecialchars($row['title']) . '" style="max-width: 100px; max-height: 50px;" />';
+        }
+        return '';
     }
 
     /**
