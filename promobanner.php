@@ -186,7 +186,7 @@ class PromoBanner extends Module
                 AND categories LIKE "%,' . (int) $id_category . ',%"';
 
         $banners = Db::getInstance()->executeS($sql);
-        // print_r($banners); // Debug: check retrieved banners
+        // print_r($banners); 
 
         // Add full image URL to each banner
         foreach ($banners as &$banner) {

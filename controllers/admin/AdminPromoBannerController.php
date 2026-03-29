@@ -255,6 +255,7 @@ class AdminPromoBannerController extends AdminController
             // Remove leading/trailing commas and split
             $cats = trim($this->object->categories, ',');
             return explode(',', $cats);
+            // print_r($cats); 
         }
         return array();
     }
@@ -283,9 +284,9 @@ class AdminPromoBannerController extends AdminController
         }
 
         // Set image path for existing banners
-        if ($this->object && $this->object->image) {
-            $this->fields_form['input'][2]['image'] = _PS_MODULE_DIR_ . 'promobanner/views/img/' . $this->object->image;
-        }
+        // if ($this->object && $this->object->image) {
+        //     $this->fields_form['input'][2]['image'] = _PS_MODULE_DIR_ . 'promobanner/views/img/' . $this->object->image;
+        // }
 
         return parent::renderForm();
     }
